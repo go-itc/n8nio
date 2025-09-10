@@ -1,9 +1,8 @@
-# Dockerfile
-FROM n8nio/n8n:alpine
-
-USER root
+FROM node:20-alpine
 RUN apk add --no-cache ffmpeg
-USER node
-
-# n8n lauscht standardmäßig auf 5678 – Railway liefert $PORT.
-# Wir mappen das auf N8N_PORT via Env (siehe Railway Vars unten).
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+ENV PORT=3000
+CMD ["node", "server.js"]
