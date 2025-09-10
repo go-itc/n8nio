@@ -1,0 +1,7 @@
+{
+  "name": "ffmpeg-wrapper",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "dependencies": { "express": "^4.19.2" }
+}
